@@ -8,10 +8,20 @@ contract Airdrop {
     IERC20 internal _token;
     address[] internal _whitelist;
     mapping(address => bool) internal _claimed;
+    uint256 amount;
 
     modifier claimed(address address_) {
         require(_claimed[address_], "Token already claimed!");
         _;
+    }
+
+    constructor(address token, address[] memory whitelist_) {
+        _token = IERC20(token);
+        _whitelist = whitelist_;
+    }
+
+    function start() public {
+        amount = _token.balanceOf(address(this)) / _whitelist.length;
     }
 
     function allowed(address address_) public view returns (bool) {
@@ -23,18 +33,13 @@ contract Airdrop {
         return false;
     }
 
-    constructor(address token, address[] memory whitelist_) {
-        _token = IERC20(token);
-        _whitelist = whitelist_;
-    }
-
     function claim(address address_) external claimed(address_) returns (bool) {
         bool permited = allowed(address_);
         if (permited) {
             bool transferred = _token.transferFrom(
                 address(this),
                 address_,
-                100e18
+                amount
             );
             if (transferred) {
                 _claimed[address_] = true;
@@ -49,17 +54,17 @@ contract Airdrop {
         return _whitelist;
     }
 
-    function updateWhitelist(
-        address[] memory newAddress
-    ) external view returns (bool) {
-        return false;
-    }
+    // function updateWhitelist(
+    //     address[] memory newAddress
+    // ) external view returns (bool) {
+    //     return false;
+    // }
 
-    function addWhitelist() external view returns (bool) {
-        return false;
-    }
+    // function addWhitelist() external view returns (bool) {
+    //     return false;
+    // }
 
-    function removeWhitelist() external view returns (bool) {
-        return false;
-    }
+    // function removeWhitelist() external view returns (bool) {
+    //     return false;
+    // }
 }
