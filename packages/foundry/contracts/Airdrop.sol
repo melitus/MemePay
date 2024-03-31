@@ -8,20 +8,23 @@ contract Airdrop {
     IERC20 internal _token;
     address[] internal _whitelist;
     mapping(address => bool) internal _claimed;
-    uint256 amount;
-
-    modifier claimed(address address_) {
-        require(_claimed[address_], "Token already claimed!");
-        _;
+    struct Options {
+        uint256 start;
+        uint256 end;
+        uint256 amount;
     }
+    Options public options;
 
-    constructor(address token, address[] memory whitelist_) {
+    constructor(
+        address token,
+        uint256 _amount,
+        address[] memory whitelist_,
+        uint256 start_,
+        uint256 end_
+    ) {
         _token = IERC20(token);
         _whitelist = whitelist_;
-    }
-
-    function start() public {
-        amount = _token.balanceOf(address(this)) / _whitelist.length;
+        options = Options(start_, end_, _amount);
     }
 
     function allowed(address address_) public view returns (bool) {
@@ -33,14 +36,10 @@ contract Airdrop {
         return false;
     }
 
-    function claim(address address_) external claimed(address_) returns (bool) {
+    function claim(address address_) external returns (bool) {
         bool permited = allowed(address_);
         if (permited) {
-            bool transferred = _token.transferFrom(
-                address(this),
-                address_,
-                amount
-            );
+            bool transferred = _token.transfer(address_, options.amount);
             if (transferred) {
                 _claimed[address_] = true;
                 return true;
