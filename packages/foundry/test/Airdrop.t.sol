@@ -48,15 +48,14 @@ contract AirdropTest is Test {
     }
 
     function test_stake() public {
-        // airdrop.claim(user);
-        // vm.prank(user);
-        // token.approve(address(stake), 10e18);
-        // vm.stopPrank();
-        // vm.prank(user);
-        // stake.stake(10e18);
-        // vm.stopPrank();
-        // vm.warp(1e15);
-        // assertEq(block.timestamp, 1e15);
+        airdrop.claim(user);
+        vm.prank(user);
+        token.approve(address(stake), 10e18);
+        vm.stopPrank();
+        vm.prank(user);
+        stake.stake(10e18);
+        vm.stopPrank();
+        vm.warp(1e15);
         assertEq(stake.rewardPerToken(), 0);
     }
 }
