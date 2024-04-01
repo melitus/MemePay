@@ -52,13 +52,20 @@ contract AirdropTest is Test {
         assertFalse(airdrop.allowed(bob));
     }
 
-    function test_start_airdrop() public {
+    function test_airdrop() public {
         vm.warp(10);
         uint256 balance = token.balanceOf(alice);
         assertEq(balance, 0);
         airdrop.claim(alice);
         balance = token.balanceOf(alice);
         assertEq(balance, 10e18);
+    }
+
+    function test_double_airdrop() public {
+        vm.warp(10);
+        airdrop.claim(alice);
+        vm.expectRevert(bytes("Airdrop already claimed"));
+        airdrop.claim(alice);
     }
 
     function test_unallowed_airdrop() public {

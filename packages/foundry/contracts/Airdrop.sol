@@ -7,7 +7,7 @@ import {IERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 contract Airdrop {
     IERC20 internal _token;
     address[] public whitelist;
-    mapping(address => bool) internal _claimed;
+    mapping(address => bool) public claimed;
     struct Options {
         uint256 start;
         uint256 end;
@@ -16,6 +16,7 @@ contract Airdrop {
     Options public options;
 
     modifier check(address address_) {
+        require(!claimed[address_], "Airdrop already claimed");
         require(block.timestamp >= options.start, "Airdrop not started");
         require(block.timestamp <= options.end, "Airdrop Ended");
         require(allowed(address_), "Not allowed to airdrop");
@@ -47,7 +48,7 @@ contract Airdrop {
     function claim(address address_) external check(address_) returns (bool) {
         bool transferred = _token.transfer(address_, options.amount);
         if (transferred) {
-            _claimed[address_] = true;
+            claimed[address_] = true;
             return true;
         }
         return false;
