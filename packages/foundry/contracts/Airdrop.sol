@@ -6,7 +6,7 @@ import {IERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract Airdrop {
     IERC20 internal _token;
-    address[] internal _whitelist;
+    address[] public whitelist;
     mapping(address => bool) internal _claimed;
     struct Options {
         uint256 start;
@@ -14,6 +14,14 @@ contract Airdrop {
         uint256 amount;
     }
     Options public options;
+
+    modifier check(address address_) {
+        require(block.timestamp >= options.start, "Airdrop not started");
+        require(block.timestamp <= options.end, "Airdrop Ended");
+        require(allowed(address_), "Not allowed to airdrop");
+
+        _;
+    }
 
     constructor(
         address token,
@@ -23,47 +31,40 @@ contract Airdrop {
         uint256 end_
     ) {
         _token = IERC20(token);
-        _whitelist = whitelist_;
+        whitelist = whitelist_;
         options = Options(start_, end_, _amount);
     }
 
-    function allowed(address address_) public view returns (bool) {
-        for (uint i = 0; i < _whitelist.length; i++) {
-            if (address_ == _whitelist[i]) {
-                return true;
+    function allowed(address address_) public view returns (bool result) {
+        result = false;
+        for (uint i = 0; i < whitelist.length; i++) {
+            if (address_ == whitelist[i]) {
+                result = true;
             }
+        }
+    }
+
+    function claim(address address_) external check(address_) returns (bool) {
+        bool transferred = _token.transfer(address_, options.amount);
+        if (transferred) {
+            _claimed[address_] = true;
+            return true;
         }
         return false;
     }
 
-    function claim(address address_) external returns (bool) {
-        bool permited = allowed(address_);
-        if (permited) {
-            bool transferred = _token.transfer(address_, options.amount);
-            if (transferred) {
-                _claimed[address_] = true;
-                return true;
+    function addWhitelist(address address_) external returns (bool) {
+        whitelist.push(address_);
+        return true;
+    }
+
+    function removeWhitelist(address address_) external returns (bool) {
+        for (uint i = 0; i < whitelist.length; i++) {
+            if (address_ == whitelist[i]) {
+                whitelist[i] = whitelist[whitelist.length - 1];
             }
-            return false;
         }
-        return false;
+        whitelist.pop();
+        return true;
     }
-
-    function whitelist() external view returns (address[] memory) {
-        return _whitelist;
-    }
-
-    // function updateWhitelist(
-    //     address[] memory newAddress
-    // ) external view returns (bool) {
-    //     return false;
-    // }
-
-    // function addWhitelist() external view returns (bool) {
-    //     return false;
-    // }
-
-    // function removeWhitelist() external view returns (bool) {
-    //     return false;
-    // }
 }
