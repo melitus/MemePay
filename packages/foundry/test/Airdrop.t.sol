@@ -116,7 +116,7 @@ contract AirdropTest is Test {
         vm.stopPrank();
         vm.prank(alice);
         vm.warp(20);
-        stake.deposit(alice, 10e18);
+        stake.deposit(10e18);
         vm.stopPrank();
         vm.warp(30);
         assertEq(stake.rewards(alice), 100000);
@@ -131,7 +131,7 @@ contract AirdropTest is Test {
         token.approve(address(stake), 10e18);
         vm.stopPrank();
         vm.prank(alice);
-        stake.deposit(alice, 10e18);
+        stake.deposit(10e18);
         vm.warp(110);
         vm.prank(alice);
         stake.withdraw();

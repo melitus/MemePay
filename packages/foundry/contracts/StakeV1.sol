@@ -18,6 +18,7 @@ contract StakeV1 {
         bonus = _bonus;
     }
 
+    /// @dev Show in ui combined with stake[address].amount
     function rewards(address user) public view returns (uint256 token) {
         token =
             (stake[user].amount / 1e18) *
@@ -25,16 +26,22 @@ contract StakeV1 {
             (block.timestamp - stake[user].start);
     }
 
-    function deposit(address user, uint256 amount) public returns (bool) {
-        bool transferred = token_.transferFrom(user, address(this), amount);
+    /// @dev call this function
+    function deposit(uint256 amount) public returns (bool) {
+        bool transferred = token_.transferFrom(
+            msg.sender,
+            address(this),
+            amount
+        );
         if (transferred) {
-            stake[user].amount = stake[user].amount + amount;
-            stake[user].start = block.timestamp;
+            stake[msg.sender].amount = stake[msg.sender].amount + amount;
+            stake[msg.sender].start = block.timestamp;
             return true;
         }
         return false;
     }
 
+    /// @dev call this function
     function withdraw() public returns (bool) {
         require(stake[msg.sender].amount != 0, "No token was deposited");
         bool transferred = token_.transfer(

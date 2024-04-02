@@ -6,8 +6,11 @@ import {IERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract Airdrop {
     IERC20 internal _token;
+    /// @dev get this array and compare if connect wallet address is in this array
     address[] public whitelist;
+    /// @dev if return true doesnt show claim button
     mapping(address => bool) public claimed;
+    /// @dev show the basic information about the aidrop
     struct Options {
         uint256 start;
         uint256 end;
@@ -45,6 +48,7 @@ contract Airdrop {
         }
     }
 
+    /// @dev call this function
     function claim(address address_) external check(address_) returns (bool) {
         bool transferred = _token.transfer(address_, options.amount);
         if (transferred) {
@@ -54,6 +58,7 @@ contract Airdrop {
         return false;
     }
 
+    /// @dev use this function to add a address to airdrop for test
     function addWhitelist(address address_) external returns (bool) {
         whitelist.push(address_);
         return true;
