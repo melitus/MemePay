@@ -4,7 +4,7 @@ pragma solidity >=0.8.0 <0.9.0;
 import "forge-std/Test.sol";
 import {Token} from "../contracts/Token.sol";
 import {Airdrop} from "../contracts/Airdrop.sol";
-import {Stake} from "../contracts/Stake.sol";
+import {StakeV1} from "../contracts/StakeV1.sol";
 
 contract AirdropTest is Test {
     address admin = makeAddr("admin");
@@ -13,7 +13,7 @@ contract AirdropTest is Test {
     address bob = makeAddr("bob");
     Token token;
     Airdrop airdrop;
-    Stake stake;
+    StakeV1 stake;
     address[] _address;
 
     function setUp() public {
@@ -24,7 +24,7 @@ contract AirdropTest is Test {
 
         token = new Token(admin, minter);
         airdrop = new Airdrop(address(token), 10e18, _address, 10, 50);
-        stake = new Stake(address(token), address(token));
+        stake = new StakeV1(address(token), 1e3);
         vm.prank(minter);
         token.mint(address(airdrop), 1e28);
         vm.stopPrank();
@@ -61,6 +61,18 @@ contract AirdropTest is Test {
         assertEq(balance, 10e18);
     }
 
+    function test_add_airdrop() public {
+        vm.warp(10);
+        vm.expectRevert(bytes("Not allowed to airdrop"));
+        airdrop.claim(bob);
+        airdrop.addWhitelist(bob);
+        uint256 balance = token.balanceOf(bob);
+        assertEq(balance, 0);
+        airdrop.claim(bob);
+        balance = token.balanceOf(bob);
+        assertEq(balance, 10e18);
+    }
+
     function test_double_airdrop() public {
         vm.warp(10);
         airdrop.claim(alice);
@@ -94,5 +106,37 @@ contract AirdropTest is Test {
     function test_add_whitlist() public {
         airdrop.addWhitelist(bob);
         assertEq(airdrop.whitelist(10), bob);
+    }
+
+    function test_skate_deposit() public {
+        vm.warp(10);
+        airdrop.claim(alice);
+        vm.prank(alice);
+        token.approve(address(stake), 10e18);
+        vm.stopPrank();
+        vm.prank(alice);
+        vm.warp(20);
+        stake.deposit(alice, 10e18);
+        vm.stopPrank();
+        vm.warp(30);
+        assertEq(stake.rewards(alice), 100000);
+        vm.warp(300);
+        assertEq(stake.rewards(alice), 2800000);
+    }
+
+    function test_skate_withdraw() public {
+        vm.warp(10);
+        airdrop.claim(alice);
+        vm.prank(alice);
+        token.approve(address(stake), 10e18);
+        vm.stopPrank();
+        vm.prank(alice);
+        stake.deposit(alice, 10e18);
+        vm.warp(110);
+        vm.prank(alice);
+        stake.withdraw();
+        vm.stopPrank();
+        uint256 balance = token.balanceOf(alice);
+        assertEq(balance, 10000000000001000000);
     }
 }
