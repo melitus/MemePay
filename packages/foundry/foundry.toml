@@ -5,8 +5,8 @@ libs = ['lib']
 fs_permissions = [{ access = "read-write", path = "./"}]
 
 [rpc_endpoints]
-default_network = "http://127.0.0.1:8545"
-localhost = "http://127.0.0.1:8545"
+default_network = "https://rpc.sepolia.org"
+localhost = "https://rpc.sepolia.org"
 
 mainnet = "https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_API_KEY}"
 sepolia = "https://rpc.sepolia.org"

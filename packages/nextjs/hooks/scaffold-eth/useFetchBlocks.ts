@@ -17,7 +17,7 @@ const BLOCKS_PER_PAGE = 20;
 export const testClient = createTestClient({
   chain: hardhat,
   mode: "hardhat",
-  transport: webSocket("ws://127.0.0.1:8545"),
+  transport: webSocket("ws://sepolia.infura.io/v3/b9794ad1ddf84dfb8c34d6bb5dca2001"),
 })
   .extend(publicActions)
   .extend(walletActions);

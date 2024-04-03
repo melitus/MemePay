@@ -12,7 +12,12 @@ export const ContractReadMethods = ({ deployedContractData }: { deployedContract
   )
     .filter(fn => {
       const isQueryableWithParams =
-        (fn.stateMutability === "view" || fn.stateMutability === "pure") && fn.inputs.length > 0;
+        (fn.stateMutability === "view" || fn.stateMutability === "pure") &&
+        fn.inputs.length > 0 &&
+        !fn.name.includes("getRoleAdmin") &&
+        !fn.name.includes("hasRole") &&
+        !fn.name.includes("nonces") &&
+        !fn.name.includes("supportsInterface");
       return isQueryableWithParams;
     })
     .map(fn => {
