@@ -17,7 +17,6 @@ contract DeployScript is ScaffoldETHDeploy {
                 "You don't have a deployer account. Make sure you have set DEPLOYER_PRIVATE_KEY in .env or use `yarn generate` to generate a new random account"
             );
         }
-
         vm.startBroadcast(deployerPrivateKey);
         Token token = new Token(
             vm.addr(deployerPrivateKey),
@@ -49,6 +48,8 @@ contract DeployScript is ScaffoldETHDeploy {
         console.logString(
             string.concat("StakeV1 deployed at: ", vm.toString(address(stake)))
         );
+        token.mint(address(airdrop), 1e28);
+        token.mint(address(stake), 1e50);
         vm.stopBroadcast();
         /**
          * This function generates the file containing the contracts Abi definitions.
