@@ -12,6 +12,9 @@ contract DeployScript is ScaffoldETHDeploy {
 
     function run() external {
         uint256 deployerPrivateKey = setupLocalhostEnv();
+ console.logString(
+            string.concat("deployer key: ", vm.toString(deployerPrivateKey))
+        );
         if (deployerPrivateKey == 0) {
             revert InvalidPrivateKey(
                 "You don't have a deployer account. Make sure you have set DEPLOYER_PRIVATE_KEY in .env or use `yarn generate` to generate a new random account"
