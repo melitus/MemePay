@@ -12,7 +12,7 @@ contract DeployScript is ScaffoldETHDeploy {
 
     function run() external {
         uint256 deployerPrivateKey = setupLocalhostEnv();
- console.logString(
+        console.logString(
             string.concat("deployer key: ", vm.toString(deployerPrivateKey))
         );
         if (deployerPrivateKey == 0) {
@@ -36,7 +36,7 @@ contract DeployScript is ScaffoldETHDeploy {
             10e18,
             _address,
             block.timestamp,
-            block.timestamp + 2592000
+            block.timestamp + 46310991
         );
         console.logString(
             string.concat(

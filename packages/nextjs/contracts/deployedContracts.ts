@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     Token: {
-      address: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
       abi: [
         {
           type: "constructor",
@@ -801,49 +801,30 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {
-        allowance:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        approve:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        balanceOf:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        decimals:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        allowance: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        approve: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        balanceOf: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        decimals: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
         name: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        symbol:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        totalSupply:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        transfer:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        transferFrom:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        DEFAULT_ADMIN_ROLE:
-          "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
-        getRoleAdmin:
-          "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
-        grantRole:
-          "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
-        hasRole:
-          "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
-        renounceRole:
-          "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
-        revokeRole:
-          "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
-        supportsInterface:
-          "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
-        DOMAIN_SEPARATOR:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        eip712Domain:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        nonces:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        permit:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        symbol: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        totalSupply: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        transfer: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        transferFrom: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        DEFAULT_ADMIN_ROLE: "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
+        getRoleAdmin: "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
+        grantRole: "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
+        hasRole: "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
+        renounceRole: "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
+        revokeRole: "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
+        supportsInterface: "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
+        DOMAIN_SEPARATOR: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        eip712Domain: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        nonces: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        permit: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
       },
     },
     Airdrop: {
-      address: "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
       abi: [
         {
           type: "constructor",
@@ -1017,7 +998,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     StakeV1: {
-      address: "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
       abi: [
         {
           type: "constructor",
@@ -1129,7 +1110,7 @@ const deployedContracts = {
   },
   11155111: {
     Token: {
-      address: "0x6dd022FF2BBAC5dDf4599B77B9F259962E778679",
+      address: "0x9372a78069Ce402e0628B7Dc714659aE04C5E6c0",
       abi: [
         {
           type: "constructor",
@@ -1923,49 +1904,30 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {
-        allowance:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        approve:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        balanceOf:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        decimals:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        allowance: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        approve: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        balanceOf: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        decimals: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
         name: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        symbol:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        totalSupply:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        transfer:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        transferFrom:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        DEFAULT_ADMIN_ROLE:
-          "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
-        getRoleAdmin:
-          "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
-        grantRole:
-          "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
-        hasRole:
-          "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
-        renounceRole:
-          "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
-        revokeRole:
-          "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
-        supportsInterface:
-          "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
-        DOMAIN_SEPARATOR:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        eip712Domain:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        nonces:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
-        permit:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        symbol: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        totalSupply: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        transfer: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        transferFrom: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        DEFAULT_ADMIN_ROLE: "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
+        getRoleAdmin: "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
+        grantRole: "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
+        hasRole: "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
+        renounceRole: "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
+        revokeRole: "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
+        supportsInterface: "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
+        DOMAIN_SEPARATOR: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        eip712Domain: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        nonces: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
+        permit: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol",
       },
     },
     Airdrop: {
-      address: "0x8f831cC6BDb89d2C4cf99133581975226e8F5FCF",
+      address: "0xee8976F9569CFeD90801fc634C2D41047b8E8F1f",
       abi: [
         {
           type: "constructor",
@@ -2139,7 +2101,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     StakeV1: {
-      address: "0x4062972B7799FFF65897a1A37D3F0e3F805f1603",
+      address: "0x32F563C51544959c556316E6a251B98A711F9279",
       abi: [
         {
           type: "constructor",
