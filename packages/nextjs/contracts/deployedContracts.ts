@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     Token: {
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      address: "0x0165878A594ca255338adfa4d48449f69242Eb8F",
       abi: [
         {
           type: "constructor",
@@ -824,7 +824,7 @@ const deployedContracts = {
       },
     },
     Airdrop: {
-      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      address: "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
       abi: [
         {
           type: "constructor",
@@ -998,7 +998,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     StakeV1: {
-      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+      address: "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
       abi: [
         {
           type: "constructor",
@@ -1110,7 +1110,7 @@ const deployedContracts = {
   },
   11155111: {
     Token: {
-      address: "0x9372a78069Ce402e0628B7Dc714659aE04C5E6c0",
+      address: "0xBEaE61f62DCBCc10e4dD67079df839ad02b4C47E",
       abi: [
         {
           type: "constructor",
@@ -1927,7 +1927,7 @@ const deployedContracts = {
       },
     },
     Airdrop: {
-      address: "0xee8976F9569CFeD90801fc634C2D41047b8E8F1f",
+      address: "0x38ABE51229158c908BbF89CC16FC5a289d15186B",
       abi: [
         {
           type: "constructor",
@@ -2101,7 +2101,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     StakeV1: {
-      address: "0x32F563C51544959c556316E6a251B98A711F9279",
+      address: "0x7d8eFC65BAb562dbBf9d25e629A7c31d2dD3f1C5",
       abi: [
         {
           type: "constructor",
